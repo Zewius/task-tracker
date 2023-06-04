@@ -1,8 +1,7 @@
-package task.tracker.grails
+package task.tracker.grails.home
 
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
-import task.tracker.grails.home.HomeService
 
 class HomeServiceSpec extends Specification implements ServiceUnitTest<HomeService>{
 
