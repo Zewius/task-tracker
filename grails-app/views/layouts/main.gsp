@@ -42,6 +42,11 @@
                     </g:link>
                 </li>
                 <li>
+                    <g:link controller="issueStage" action="index">
+                        <g:message code="nav.issueStage.label"/>
+                    </g:link>
+                </li>
+                <li>
                     <g:link controller="programmer" action="index">
                         <g:message code="nav.programmer.label"/>
                     </g:link>

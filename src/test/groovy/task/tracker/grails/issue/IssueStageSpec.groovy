@@ -1,9 +1,9 @@
-package task.tracker.grails.home
+package task.tracker.grails.issue
 
-import grails.testing.services.ServiceUnitTest
+import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class HomeServiceSpec extends Specification implements ServiceUnitTest<HomeService>{
+class IssueStageSpec extends Specification implements DomainUnitTest<IssueStage> {
 
     def setup() {
     }

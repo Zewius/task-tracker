@@ -1,5 +1,6 @@
 package task.tracker.grails
 
+import task.tracker.grails.issue.IssueStage
 import task.tracker.grails.issue.IssueType
 import task.tracker.grails.programmer.Programmer
 import task.tracker.grails.programmer.ProgrammerPosition
@@ -17,18 +18,18 @@ class BootStrap {
         def seniorTester = new TesterPosition(name: "Старший тестировщик").save()
         def juniorTester = new TesterPosition(name: "Младший тестировщик").save()
 
-        def konovalov = new Tester(firstName: "Михаил", lastName: "Коновалов", position: leadTester).save()
-        def borovinskih = new Tester(firstName: "Никита", lastName: "Боровинских", position: seniorTester).save()
-        def lavchenko = new Tester(firstName: "Даниил", lastName: "Лавщенко", position: juniorTester).save()
+        def tester1 = new Tester(firstName: "Михаил", lastName: "Михайлов", position: leadTester).save()
+        def tester2 = new Tester(firstName: "Иван", lastName: "Иванов", position: seniorTester).save()
+        def tester3 = new Tester(firstName: "Петр", lastName: "Петров", position: juniorTester).save()
 
         def leadProgrammer = new ProgrammerPosition(name: "Ведущий разработчик").save()
         def seniorProgrammer = new ProgrammerPosition(name: "Старший разработчик").save()
         def juniorProgrammer = new ProgrammerPosition(name: "Младший разработчик").save()
 
-        def krasilov = new Programmer(firstName: "Сергей", lastName: "Красилов", position: leadProgrammer).save()
-        def bovkun = new Programmer(firstName: "Евгений", lastName: "Бовкун", position: leadProgrammer).save()
-        def penzin = new Programmer(firstName: "Максим", lastName: "Пензин", position: seniorProgrammer).save()
-        def bashkaev = new Programmer(firstName: "Илья", lastName: "Башкаев", position: juniorProgrammer).save()
+        def programmer1 = new Programmer(firstName: "Сергей", lastName: "Красилов", position: leadProgrammer).save()
+        def programmer2 = new Programmer(firstName: "Николай", lastName: "Басков", position: leadProgrammer).save()
+        def programmer3 = new Programmer(firstName: "Филипп", lastName: "Киркоров", position: seniorProgrammer).save()
+        def programmer4 = new Programmer(firstName: "Рулон", lastName: "Обоев", position: juniorProgrammer).save()
         // Заполнение приложения тестовыми данными
 
         // Не удалять - важно
@@ -57,8 +58,8 @@ class BootStrap {
                 issueType: missingFeature,
                 name: "Добавить функцию расчета калорий",
                 description: "Необходимо добавить функцию расчета суточной нормы калорий и отображением количества потраченных калорий во время тренировки",
-                programmer: krasilov,
-                tester: konovalov,
+                programmer: programmer1,
+                tester: tester1,
                 creationDate: new Date(2022, 5, 25),
                 deadline: new Date(2022, 6, 15)
         ).save()
@@ -68,8 +69,8 @@ class BootStrap {
                 issueType: incorrectOperation,
                 name: "Исправить ошибку с входом в приложение",
                 description: "Приложение не позволяет некоторым пользователям войти в свой аккаунт",
-                programmer: bovkun,
-                tester: borovinskih,
+                programmer: programmer2,
+                tester: tester2,
                 creationDate: new Date(2022, 7, 3),
                 deadline: new Date(2022, 7, 6)
         ).save()
@@ -79,8 +80,8 @@ class BootStrap {
                 issueType: lowPerformance,
                 name: "Оптимизировать загрузку изображений",
                 description: "Загрузка изображений на экран тренировок занимает слишком много времени",
-                programmer: penzin,
-                tester: lavchenko,
+                programmer: programmer3,
+                tester: tester3,
                 creationDate: new Date(2022, 7, 15),
                 deadline: new Date(2022, 7, 30)
         ).save()
@@ -90,8 +91,8 @@ class BootStrap {
                 issueType: scalability,
                 name: "Поддержка большего количества пользователей",
                 description: "Приложение начинает тормозить при увеличении количества пользователей",
-                programmer: krasilov,
-                tester: borovinskih,
+                programmer: programmer1,
+                tester: tester2,
                 creationDate: new Date(2022, 9, 1),
                 deadline: new Date(2022, 9, 15)
         ).save()
@@ -101,8 +102,8 @@ class BootStrap {
                 issueType: dataCorruption,
                 name: "Исправить проблему с сохранением фотографий",
                 description: "Приложение случайно теряет фотографии, загруженные пользователями",
-                programmer: penzin,
-                tester: borovinskih,
+                programmer: programmer3,
+                tester: tester2,
                 creationDate: new Date(2022, 10, 1),
                 deadline: new Date(2022, 10, 10)
         ).save()
@@ -112,8 +113,8 @@ class BootStrap {
                 issueType: installationProblem,
                 name: "Исправить проблему с установкой на Android 11",
                 description: "Приложение не устанавливается на устройствах Android 11",
-                programmer: bovkun,
-                tester: konovalov,
+                programmer: programmer2,
+                tester: tester1,
                 creationDate: new Date(2022, 11, 1),
                 deadline: new Date(2022, 11, 3)
         ).save()
@@ -123,8 +124,8 @@ class BootStrap {
                 issueType: documentationIssue,
                 name: "Обновить руководство пользователя",
                 description: "Руководство пользователя устарело и содержит неточности",
-                programmer: krasilov,
-                tester: borovinskih,
+                programmer: programmer1,
+                tester: tester2,
                 creationDate: new Date(2022, 12, 1),
                 deadline: new Date(2022, 12, 5)
         ).save()
@@ -134,8 +135,8 @@ class BootStrap {
                 issueType: cosmeticFlaw,
                 name: "Изменить дизайн экрана настроек",
                 description: "Необходимо изменить дизайн экрана настроек, чтобы он лучше соответствовал общему стилю приложения",
-                programmer: bashkaev,
-                tester: borovinskih,
+                programmer: programmer4,
+                tester: tester2,
                 creationDate: new Date(2023, 1, 1),
                 deadline: new Date(2023, 1, 3)
         ).save()
@@ -145,8 +146,8 @@ class BootStrap {
                 issueType: missingFeature,
                 name: "Добавить функцию записей",
                 description: "Необходимо добавить возможность вести записи о выполненных тренировках",
-                programmer: penzin,
-                tester: lavchenko,
+                programmer: programmer3,
+                tester: tester3,
                 creationDate: new Date(2023, 2, 1),
                 deadline: new Date(2023, 2, 5)
         ).save()
@@ -156,8 +157,8 @@ class BootStrap {
                 issueType: lowPerformance,
                 name: "Оптимизировать поиск по базе данных",
                 description: "Поиск по базе данных пользователей и тренировок занимает слишком много времени",
-                programmer: krasilov,
-                tester: borovinskih,
+                programmer: programmer1,
+                tester: tester2,
                 creationDate: new Date(2023, 3, 1),
                 deadline: new Date(2023, 3, 10)
         ).save()
@@ -167,8 +168,8 @@ class BootStrap {
                 issueType: localizationIssue,
                 name: "Исправить ошибки в переводе на испанский язык",
                 description: "Некоторые фразы в переводе на испанский язык переведены некорректно",
-                programmer: bovkun,
-                tester: konovalov,
+                programmer: programmer2,
+                tester: tester1,
                 creationDate: new Date(2023, 4, 1),
                 deadline: new Date(2023, 4, 3)
         ).save()
@@ -178,8 +179,8 @@ class BootStrap {
                 issueType: systemCrash,
                 name: "Исправить проблему с зависанием приложения",
                 description: "Приложение случайно зависает при работе",
-                programmer: penzin,
-                tester: borovinskih,
+                programmer: programmer3,
+                tester: tester2,
                 creationDate: new Date(2023, 5, 1),
                 deadline: new Date(2023, 5, 3)
         ).save()
@@ -189,8 +190,8 @@ class BootStrap {
                 issueType: missingFeature,
                 name: "Добавить календарь тренировок",
                 description: "Необходимо добавить функцию отображения календаря выполненных или запланированных тренировок",
-                programmer: bashkaev,
-                tester: lavchenko,
+                programmer: programmer4,
+                tester: tester3,
                 creationDate: new Date(2023, 6, 1),
                 deadline: new Date(2023, 6, 7)
         ).save()
@@ -200,8 +201,8 @@ class BootStrap {
                 issueType: incorrectOperation,
                 name: "Исправить проблему с отображением времени",
                 description: "Приложение отображает некорректное время на нескольких экранах",
-                programmer: krasilov,
-                tester: borovinskih,
+                programmer: programmer1,
+                tester: tester2,
                 creationDate: new Date(2023, 7, 1),
                 deadline: new Date(2023, 7, 3)
         ).save()
@@ -211,8 +212,8 @@ class BootStrap {
                 issueType: scalability,
                 name: "Улучшить масштабируемость приложения",
                 description: "Приложение не масштабируется при сверхбольшом количестве пользователей",
-                programmer: bovkun,
-                tester: lavchenko,
+                programmer: programmer2,
+                tester: tester3,
                 creationDate: new Date(2023, 8, 1),
                 deadline: new Date(2023, 8, 15)
         ).save()
@@ -222,8 +223,8 @@ class BootStrap {
                 issueType: dataCorruption,
                 name: "Исправить проблему с сохранением данных о тренировках",
                 description: "Приложение случайно теряет данные о выполненных тренировках",
-                programmer: krasilov,
-                tester: borovinskih,
+                programmer: programmer1,
+                tester: tester2,
                 creationDate: new Date(2023, 9, 1),
                 deadline: new Date(2023, 9, 5)
         ).save()
@@ -233,8 +234,8 @@ class BootStrap {
                 issueType: lowPerformance,
                 name: "Увеличить скорость загрузки приложения",
                 description: "Приложение загружается слишком долго на некоторых устройствах",
-                programmer: penzin,
-                tester: konovalov,
+                programmer: programmer3,
+                tester: tester1,
                 creationDate: new Date(2023, 10, 1),
                 deadline: new Date(2023, 10, 3)
         ).save()
@@ -244,8 +245,8 @@ class BootStrap {
                 issueType: installationProblem,
                 name: "Исправить проблему с установкой на iOS 15",
                 description: "Приложение не устанавливается на устройствах iOS 15",
-                programmer: bashkaev,
-                tester: borovinskih,
+                programmer: programmer4,
+                tester: tester2,
                 creationDate: new Date(2023, 11, 1),
                 deadline: new Date(2023, 11, 5)
         ).save()
@@ -255,8 +256,8 @@ class BootStrap {
                 issueType: missingFeature,
                 name: "Добавить функцию мотивации",
                 description: "Необходимо добавить функцию мотивации пользователей к выполнению тренировок",
-                programmer: krasilov,
-                tester: lavchenko,
+                programmer: programmer1,
+                tester: tester3,
                 creationDate: new Date(2023, 12, 1),
                 deadline: new Date(2023, 12, 7)
         ).save()
@@ -266,14 +267,25 @@ class BootStrap {
                 issueType: incorrectOperation,
                 name: "Исправить ошибку с подсчетом тренировок",
                 description: "Приложение неправильно подсчитывает количество выполненных тренировок",
-                programmer: bovkun,
-                tester: konovalov,
+                programmer: programmer2,
+                tester: tester1,
                 creationDate: new Date(2024, 1, 1),
                 deadline: new Date(2024, 1, 3)
         ).save()
+
+        def taskStage1 = new IssueStage(name: 'Открыта').save()
+        def taskStage2 = new IssueStage(name: 'Анализ').save()
+        def taskStage3 = new IssueStage(name: 'В плане').save()
+        def taskStage4 = new IssueStage(name: 'Назначена').save()
+        def taskStage5 = new IssueStage(name: 'В работе').save()
+        def taskStage6 = new IssueStage(name: 'На ревью').save()
+        def taskStage7 = new IssueStage(name: 'На тестировании').save()
+        def taskStage8 = new IssueStage(name: 'Закрыта').save()
+
         // Заполнение приложения тестовыми данными
 
     }
+
     def destroy = {
     }
 }
